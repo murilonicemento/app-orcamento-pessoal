@@ -1,2 +1,2 @@
-# app-orcamento-pessoal
+# App Orçamento Pessoal
 Projeto Udemy App Orçamento Pessoal
