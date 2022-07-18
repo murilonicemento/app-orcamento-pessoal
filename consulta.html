@@ -136,10 +136,11 @@
     </div>
   </div>
 </body>
-<script>
-  function carregaListaDespesas() {
-    let despesas = Array()
-    despesas = bd.recuperarTodosRegistros()
+<script src="">
+  function carregaListaDespesas(despesas = Array(), filtro = false) {
+    if (despesas.length == 0 && filtro == false) {
+      despesas = bd.recuperarTodosRegistros()
+    }
     //selecionando o elemento tbody da tabela
     let listaDespesas = document.getElementById("listaDespesas")
     //percorrer o array despesas
@@ -166,9 +167,8 @@
       linha.insertCell(2).innerHTML = d.descricao
       linha.insertCell(3).innerHTML = d.valor
     })
+    carregaListaDespesas(despesas, true)
   }
-
-  carregaListaDespesas()
 </script>
 
 </html>

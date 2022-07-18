@@ -43,6 +43,7 @@ class Bd {
             if (despesa === null) {
                 continue
             }
+            despesa.id = i
             despesas.push(despesa)
         }
         return despesas
@@ -75,6 +76,9 @@ class Bd {
             despesasFiltradas = despesasFiltradas.filter(d => d.valor == despesa.valor)
         }
         return despesasFiltradas
+    }
+    remover(id){
+        localStorage.removeItem(id) 
     }
 }
 
@@ -128,6 +132,7 @@ function pesquisarDespesas() {
     let despesas = new Despesas(ano, mes, dia, tipo, descricao, valor)
     let despesa = bd.pesquisar(despesas)
     let listaDespesas = document.getElementById("listaDespesas")
+    listaDespesas.innerHTML = ""
     //percorrer o array despesas
     //percorrer o array despesas
     despesa.forEach(function (d) {
@@ -152,5 +157,16 @@ function pesquisarDespesas() {
         linha.insertCell(1).innerHTML = d.tipo
         linha.insertCell(2).innerHTML = d.descricao
         linha.insertCell(3).innerHTML = d.valor
+        //botão de exclusão
+        let btn = document.createElement("button")
+        btn.className = "btn btn-danger"
+        btn.innerHTML = '<i class = "fas fa-times"></i>'
+        btn.id = `id_despesa_${d.id}`
+        btn.onclick = function(){
+            let id = this.id.replace("id_despesa_", "")
+            bd.remover(id)
+            window.location.reload()
+        }
+        linha.insertCell(4).append(btn)
     })
 }
