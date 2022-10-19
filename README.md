@@ -20,8 +20,8 @@ https://persbudgt-app.netlify.app/
 
 ## Tela Cadastro
 #
-<img src="img/tela-cadastro.png">
+<img src="./.github/tela-cadastro.png">
 
 ## Tela Consulta
 #
-<img src="img/tela-consulta.png">
+<img src="./.github/tela-consulta.png">
